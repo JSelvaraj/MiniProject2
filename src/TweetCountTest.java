@@ -10,10 +10,10 @@ import static org.junit.Assert.*;
 public class TweetCountTest {
 
 
-    private static final int MAX_MAPPERS = 4;
+    private static final int MAX_MAPPERS = 12;
     private static final int MAX_THREADS = 4;
-    private static final int NUMBER_OF_REPEATS = 5;
-    private static final String INPUT_PATH = "/cs/scratch/js395/15-hours/*/*.json";
+    private static final int NUMBER_OF_REPEATS = 1;
+    private static final String INPUT_PATH = "/cs/scratch/js395/02/01/*.json";
     private static final String OUTPUT_PATH = "output";
     private static String varyMappersDoc = "";
     private static String varyThreadsDoc = "";
@@ -44,7 +44,7 @@ public class TweetCountTest {
             varyThreadsDoc += "\n" + i + " Threads";
             for (int j = 0; j < NUMBER_OF_REPEATS; j++) {
                 startTime = System.currentTimeMillis();
-                new TweetCount(INPUT_PATH, OUTPUT_PATH + "/varyThreads/" + i + "/" + j, 1, i);
+                new TweetCount(INPUT_PATH, i, OUTPUT_PATH + "/varyThreads/" + i + "/" + j);
                 endTime = System.currentTimeMillis();
                 varyThreadsDoc += ", " + (endTime - startTime);
             }
