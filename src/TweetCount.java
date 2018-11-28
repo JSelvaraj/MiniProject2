@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TweetCount {
 
 
-    private int MaxRunningMaps = 4;
+    private int MaxRunningMaps = 1;
     private int maxThreads = 1;
     private String inputDirectory;
     private String outputDirectory;

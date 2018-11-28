@@ -16,7 +16,7 @@ public class ProjectMain {
             System.out.println("Usage: java -cp \"lib/*:bin\"  ProjectMain <Input_Path> <Output_Path>");
         } else {
             long startTime = System.currentTimeMillis();
-            TweetCount tweetCounter = new TweetCount(args[0], args[1]);
+            new TweetCount(args[0], args[1]);
             long endTime = System.currentTimeMillis();
             System.out.println(endTime - startTime);
         }
