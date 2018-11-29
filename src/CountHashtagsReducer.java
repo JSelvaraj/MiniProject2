@@ -10,9 +10,9 @@ public class CountHashtagsReducer extends Reducer<Text, LongWritable, Text, Long
 
     /**
      * Sums the values from the map task and puts them into one sheet.
-     * @param key
-     * @param values
-     * @param output
+     * @param key the hashtag being tracked
+     * @param values I list of 1s with length equal to how many times a particular hashtag has been found in the data
+     * @param output the file containing the final list of keys and values.
      * @throws IOException
      * @throws InterruptedException
      */

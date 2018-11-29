@@ -8,6 +8,8 @@ import java.io.StringReader;
 
 public class ScanTweetsMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
 
+    private boolean english = false;
+
     public void map(LongWritable key, Text value, Context output) throws IOException, InterruptedException {
 
         String tweet = value.toString();
