@@ -11,6 +11,14 @@ import java.io.StringReader;
 
 public class MostRetweetedUserMapper extends Mapper<LongWritable, Text, Text, Text> {
 
+    /**
+     *
+     * @param key The offset in the file (not relevant).
+     * @param value The line of text representing a tweet.
+     * @param output the file being written to.
+     * @throws IOException If the input doesn't exist.
+     * @throws InterruptedException if the process is stopped midway.
+     */
     protected void map(LongWritable key, Text value, Context output) throws IOException, InterruptedException {
 
         String tweet = value.toString();
@@ -25,9 +33,7 @@ public class MostRetweetedUserMapper extends Mapper<LongWritable, Text, Text, Te
                 String userID = user.getString("id_str");
                 String tweetID = innerTweet.getString("id_str");
                 int count = innerTweet.getInt("retweet_count");
-//                System.out.println("Retweet Count: " + count);
                 String composite = tweetID + "," + count;
-//                System.out.println("Composite: " + composite);
                 output.write(new Text(userID), new Text(composite));
             }
         }

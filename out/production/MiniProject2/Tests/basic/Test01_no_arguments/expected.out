@@ -1,0 +1,1 @@
+Usage: java -cp "lib/*:bin" ProjectMain <input_path> <output_path>

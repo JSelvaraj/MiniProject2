@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
+
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -9,6 +11,9 @@ import org.apache.commons.io.FileUtils;
  */
 public class ProjectMain {
 
+    /**
+     * For Testing on Palain
+     */
 //    private static final int MAX_MAPPERS = 12;
 //    private static final int MAX_THREADS = 4;
 //    private static final int NUMBER_OF_REPEATS = 10;
@@ -20,8 +25,9 @@ public class ProjectMain {
      * @throws IOException If the tweet objects cannot be read.
      */
     public static void main(String args[]) throws IOException {
+
         if (args.length != 2) {
-            System.out.println("Usage: java -cp \"lib/*:bin\"  ProjectMain <Input_Path> <Output_Path>");
+            System.out.println("Usage: java -cp \"lib/*:bin\" ProjectMain <input_path> <output_path>");
         } else {
             int choice = 0;
             String input = args[0];
@@ -40,18 +46,23 @@ public class ProjectMain {
                         break;
                     case 4:
                         TweetCount.mapReduceRetweets(input, output);
+                        TweetCount.sortResults(output);
                         break;
                     case 5:
                         TweetCount.mapReduceMostRetweeted(input, output);
+                        TweetCount.sortResults(output);
                         break;
                     case 6:
                         File outputFilePath = new File(output);
                         FileUtils.deleteDirectory(outputFilePath);
                         break;
-
                 }
             }
 
+
+            /**
+             * Used for testing on Palain
+             */
 //            String varyBothDoc = "";
 //            for (int i = 1; i < MAX_MAPPERS + 1; i++) {
 //                long startTime = 0;
@@ -61,7 +72,7 @@ public class ProjectMain {
 //                    varyBothDoc += "\n" + j + " Threads";
 //                    for (int k = 0; k < NUMBER_OF_REPEATS; k++) {
 //                        startTime = System.currentTimeMillis();
-//                        TweetCount.MapReduce("/cs/home/js395/CS2001/2hours/*/*.json", args[1] + "/varyBoth/" + i + "/" + j + "/" + k, i, j);
+//                        TweetCount.MapReduceHashtags("/cs/home/js395/CS2001/2hours/*/*.json", args[1] + "/varyBoth/" + i + "/" + j + "/" + k, i, j);
 //                        endTime = System.currentTimeMillis();
 //                        varyBothDoc += ", " + (endTime - startTime);
 //                    }
@@ -76,4 +87,5 @@ public class ProjectMain {
         }
 
     }
+
 }

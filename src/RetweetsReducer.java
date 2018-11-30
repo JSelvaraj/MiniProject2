@@ -15,8 +15,8 @@ public class RetweetsReducer extends Reducer<Text, LongWritable, Text, LongWrita
      * @param values the list of retweet_counts associated with that string
      * @param context the output file where all the key value pairs will be written.
      *
-     * @throws IOException
-     * @throws InterruptedException
+     * @throws IOException If the input doesn't exist
+     * @throws InterruptedException if the process is stopped midway.
      */
     @Override
     protected void reduce(Text key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
